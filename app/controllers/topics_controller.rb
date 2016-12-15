@@ -65,7 +65,7 @@ class TopicsController < ApplicationController
   def upvote
     @topic = Topic.find(params[:id])
     @topic.votes.create
-    redirect_to(topic_path)
+    redirect_to(topics_path)
   end
   private
     # Use callbacks to share common setup or constraints between actions.
