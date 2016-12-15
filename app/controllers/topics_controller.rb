@@ -4,7 +4,8 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all.order('count DESC')
+    @topics = Topic.all.sort_by {|topic| topic.votes.count}.reverse
+ 
   end
 
   # GET /topics/1
