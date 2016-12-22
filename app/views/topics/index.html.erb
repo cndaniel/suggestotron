@@ -12,7 +12,8 @@
   </thead>
 
   <tbody>
-    <% @topics.each do |topic| %>
+    <% @topics.sort_by{|topic| -topic.votes.count}.each do |topic| %>
+    <%# @topics.sort{|a,b| b.votes.count <=> a.votes.count}.each do |topic| %>
       <tr>
         <td><%= link_to topic.title, topic %></td>
 
