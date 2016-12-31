@@ -73,7 +73,7 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     @topic.votes.last.destroy
     #alternative solution:
-    @topic.votes.last.try(:destroy)
+    #@topic.votes.last.try(:destroy)
     redirect_to topics_path
   end
   private
