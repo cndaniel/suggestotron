@@ -60,6 +60,7 @@ class TopicsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 
