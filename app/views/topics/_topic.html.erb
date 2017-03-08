@@ -1,0 +1,11 @@
+  <!-- an alternative solution -->
+  <%# @topics.sort{|a,b| b.votes.count <=> a.votes.count}.each do |topic| %>
+    <tr>
+      <td><%= link_to topic.title, topic %></td>
+
+      <td><%= pluralize(topic.votes.count, "vote") %></td>
+      <td><%= button_to '+1',upvote_topic_path(topic),remote:true, method: :post %></td>
+      <td><%= button_to '-1',downvote_topic_path(topic), remote: true,method: :post %></td>
+      <td><%= link_to 'Delete', topic, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %></td>
+
+    </tr>
