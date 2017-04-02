@@ -7,6 +7,9 @@ class TopicsController < ApplicationController
     @topics = Topic.all.sort_by {|topic| topic.votes.count}.reverse
     #Alternatiive:
     #@topics =  Topic.all.sort{|a,b| b.topics.vores.count <=> a.topics.count}
+    #or use left outer join
+    #@topics = Toipic.left_joins(:votes).group("topics_id").order("count(topics_id) DESC)
+    
   end
 
   # GET /topics/1
