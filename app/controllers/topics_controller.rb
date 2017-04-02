@@ -4,7 +4,8 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all
+    # @topics = Topic.all.sort_by{|topic| -topic.votes.count}
+    @topics = Topic.left_joins(:votes).group(topics).order("sum(topic_id) DESC")
 
   end
 
@@ -71,7 +72,7 @@ class TopicsController < ApplicationController
 
   def downvote
     @topic = Topic.find(params[:id])
-    @topic.votes.last.destroy
+    @topic.votes.last.destroy unless @topic.votes.empty
     #alternative solution:
     #@topic.votes.last.try(:destroy)
     redirect_to topics_path
