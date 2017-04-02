@@ -12,7 +12,7 @@
   </thead>
 
   <tbody>
-    <% @topics.sort_by{|topic| -topic.votes.count}.each do |topic| %>
+    <% @topics.each do |topic| %>
     <!-- an alternative solution -->
     <%# @topics.sort{|a,b| b.votes.count <=> a.votes.count}.each do |topic| %>
       <tr>
