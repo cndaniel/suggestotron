@@ -4,8 +4,9 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
+    @topics = Topic.order("votes_count DESC")
     # @topics = Topic.all.sort_by{|topic| -topic.votes.count}
-  @topics = Topic.left_joins(:votes).group("topic_id").order("count(topic_id) DESC")
+  # @topics = Topic.left_joins(:votes).group("topic_id").order("count(topic_id) DESC")
 
   end
 
